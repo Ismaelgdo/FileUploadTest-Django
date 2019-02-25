@@ -1,0 +1,25 @@
+
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+  <h2>{{book_info.pdf}}</h2>
+  <br>
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form|crispy }}
+    <h6>Title</h6>
+    <input type="text" name="title" value="{{book_info.title}}" >
+    <p></p>
+    <h6>Author</h6>
+    <input type="text" name="author" value="{{book_info.author}}">
+    <p></p>
+    <h6>Book pdf</h6>
+    <input type="file" name="pdf" value="{{book_info.pdf}}">
+    <p></p>
+    <h6>Cover Image</h6>
+    <input type="file" name="cover" value="{{book_info.cover}}">
+    <button type="submit" class="btn btn-primary"> Upload book</button>
+  </form>
+{% endblock %}
